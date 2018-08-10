@@ -1,0 +1,49 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateTaxonomiesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create( 'taxonomies', function ( Blueprint $table ) {
+            $table->increments('id');
+
+            $table->integer('term_id')
+                ->nullable()
+                ->unsigned()
+                ->references('id')
+                ->on('terms')
+                ->onDelete('cascade');
+
+            $table->string('taxonomy')->default('default');
+            $table->string('desc')->nullable();
+
+            $table->integer('parent')->unsigned()->default(0);
+
+            $table->smallInteger('sort')->unsigned()->default(0);
+
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->unique(['term_id', 'taxonomy']);
+        } );
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists( 'taxonomies' );
+    }
+}
