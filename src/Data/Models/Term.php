@@ -4,7 +4,7 @@ namespace WebbingBrasil\Taxonomies\Data\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Webbing\CMS\Model\Traits\Sluggable;
+use Cviebrock\EloquentSluggable\Sluggable;
 use WebbingBrasil\EloquentSTI\CanBeInherited;
 
 /**
