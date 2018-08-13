@@ -9,6 +9,12 @@ Install package via composer
 composer require "webbingbrasil/laravel-taxonomies=0.1.0"
 ```
 
+Next, if you are using Laravel prior to 5.5, register the service provider in the providers array of your config/app.php configuration file:
+
+```php
+WebbingBrasil\Taxonomies\Providers\TaxonomyServiceProvider::class,
+```
+
 To get started, you'll need to publish the vendor assets and migrate:
 
 ```php

@@ -21,7 +21,7 @@ class Term extends Model
      *
      * @var string
      */
-    //protected $table = 'terms';
+    protected $table = 'terms';
 
     /**
      * The attributes that are mass assignable.

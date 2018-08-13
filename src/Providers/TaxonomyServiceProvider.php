@@ -11,35 +11,26 @@ use Illuminate\Support\ServiceProvider;
 
 class TaxonomyServiceProvider extends ServiceProvider
 {
-    protected $migrations = [
-        'CreateTermsTable' => 'create_terms_table',
-        'CreateTaxonomiesTable' => 'create_taxonomies_table',
-        'CreateTaxablesTable' => 'create_taxables_table',
-    ];
 
     /**
      * Publish package migration
      */
     public function boot()
     {
-        $this->handleMigrations();
+        if ($this->app->runningInConsole()) {
+            $this->registerMigrations();
+        }
     }
 
     /**
-     * Publish migrations.
+     * Register migration files.
      *
      * @return void
      */
-    private function handleMigrations()
+    protected function registerMigrations()
     {
-        foreach ($this->migrations as $class => $file) {
-            if (! class_exists($class)) {
-                $timestamp = date('Y_m_d_His', time());
-                $this->publishes([
-                    __DIR__ .'/../database/migrations/'. $file .'.php.stub' =>
-                        database_path('migrations/'. $timestamp .'_'. $file .'.php')
-                ], 'migrations');
-            }
-        }
+        $this->publishes([
+            __DIR__.'/../../resources/database/migrations' => database_path('migrations'),
+        ], 'taxonomies-migrations');
     }
 }
