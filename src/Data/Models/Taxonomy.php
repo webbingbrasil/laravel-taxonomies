@@ -1,4 +1,16 @@
 <?php
+/**
+ *  Copyright (c) 2018 Webbing Brasil (http://www.webbingbrasil.com.br)
+ *  All Rights Reserved
+ *
+ *  This file is part of the calculadora-triunfo project.
+ *
+ *  @project calculadora-triunfo
+ *  @file Taxonomy.php
+ *  @author Danilo Andrade <danilo@webbingbrasil.com.br>
+ *  @date 10/08/18 at 17:10
+ *  @copyright  Copyright (c) 2018 Webbing Brasil (http://www.webbingbrasil.com.br)
+ */
 
 namespace WebbingBrasil\Taxonomies\Data\Models;
 

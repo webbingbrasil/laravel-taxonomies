@@ -1,4 +1,16 @@
 <?php
+/**
+ *  Copyright (c) 2018 Webbing Brasil (http://www.webbingbrasil.com.br)
+ *  All Rights Reserved
+ *
+ *  This file is part of the calculadora-triunfo project.
+ *
+ *  @project calculadora-triunfo
+ *  @file Term.php
+ *  @author Danilo Andrade <danilo@webbingbrasil.com.br>
+ *  @date 13/08/18 at 12:30
+ *  @copyright  Copyright (c) 2018 Webbing Brasil (http://www.webbingbrasil.com.br)
+ */
 
 namespace WebbingBrasil\Taxonomies\Data\Models;
 
@@ -30,6 +42,7 @@ class Term extends Model
      */
     protected $fillable = [
         'name',
+        'shared',
         'slug',
     ];
 

@@ -1,5 +1,18 @@
 <?php
 /**
+ *  Copyright (c) 2018 Webbing Brasil (http://www.webbingbrasil.com.br)
+ *  All Rights Reserved
+ *
+ *  This file is part of the calculadora-triunfo project.
+ *
+ *  @project calculadora-triunfo
+ *  @file HasTaxonomies.php
+ *  @author Danilo Andrade <danilo@webbingbrasil.com.br>
+ *  @date 10/08/18 at 17:09
+ *  @copyright  Copyright (c) 2018 Webbing Brasil (http://www.webbingbrasil.com.br)
+ */
+
+/**
  * Created by PhpStorm.
  * User: Danilo
  * Date: 09/08/2018
@@ -123,7 +136,7 @@ trait HasTaxonomies
 
         if (is_string($term)) {
             $query->whereHas('term', function(Builder $query) use ($term) {
-                $query->where('name', $term);
+                $query->where('slug', $term);
             });
         }
 
@@ -201,7 +214,7 @@ trait HasTaxonomies
         }
 
         if (is_string($term)) {
-            $term = Term::firstOrNew(['name' => $term]);
+            $term = Term::firstOrNew(['slug' => $term]);
         }
 
         if ($term instanceof AbstractTerm) {
