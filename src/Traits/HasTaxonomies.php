@@ -37,11 +37,37 @@ trait HasTaxonomies
     /**
      * Return a collection of taxonomies related to the taxed model.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany|Builder|Taxonomy
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany|Builder|Taxonomy[]
      */
     public function taxonomies()
     {
         return $this->morphToMany(Taxonomy::class, 'taxable');
+    }
+
+    /**
+     * Return a collection of terms related to the taxed model.
+     *
+     * @param null|string $taxonomy
+     * @return \Illuminate\Support\Collection|Term[]
+     */
+    public function terms($taxonomy = null)
+    {
+        /** @var Builder $query */
+        $query = $this->taxonomies()->with('term');
+
+        if(!empty($taxonomy)) {
+            $query->where('taxonomy', $taxonomy);
+        }
+
+        $terms = collect();
+
+        $query->each(function(Taxonomy $taxonomy) use ($terms) {
+            if($taxonomy->term) {
+                $terms->push($taxonomy->term);
+            }
+        });
+
+        return $terms;
     }
 
     /**
