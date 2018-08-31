@@ -12,7 +12,7 @@
         "php"                 : ">=5.6.4|^7.0",
         "illuminate/support"  : ">=5.3",
         "illuminate/database" : ">=5.3",
-        "webbingbrasil/eloquent-sti": "~0.1",
+        "webbingbrasil/eloquent-sti": "~1.0",
         "cviebrock/eloquent-sluggable": "~4.1"
     },
     "autoload": {
