@@ -234,12 +234,11 @@ trait HasTaxonomies
         if (is_numeric($term)) {
             $founded = app(Taxonomy::class)->where('term_id', $term)->where('taxonomy', $taxonomy)->first();
             if($founded){
-                /** @var Taxonomy $taxonomy */
-                $taxonomy = $founded;
+                return object_get($founded, 'id');
             }
         }
 
-        if (is_string($term)) {
+        if (!is_numeric($term)) {
             $term = Term::firstOrNew(['slug' => $term]);
         }
 
